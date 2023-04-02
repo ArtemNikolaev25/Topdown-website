@@ -7,14 +7,15 @@ const states = {
 
 
 class State{
-    constructor(state){
+    constructor(state , game){
         this.state = state;
+        this.game = game;
     }
 }
 
 export class TurningDown extends State{
-    constructor(player){
-        super('TURNING_DOWN')
+    constructor(player , game){
+        super('TURNING_DOWN'  , game)
         this.player = player;
         this.image = new Image();
         this.image.src = '../Images/playerDown.png';
@@ -26,7 +27,7 @@ export class TurningDown extends State{
     }
 
     handleInput(input){
-        if(this.player.speedY !== 0) this.player.maxFrame = 3;
+        if(this.game.speedY !== 0) this.player.maxFrame = 3;
         else this.player.maxFrame = 0;
 
         if(input.includes('d')) this.player.setState(states.TURNING_RIGHT);
@@ -36,8 +37,8 @@ export class TurningDown extends State{
 } 
 
 export class TurningRight extends State{
-    constructor(player){
-        super('TURNING_RIGHT')
+    constructor(player , game){
+        super('TURNING_RIGHT' , game)
         this.player = player;
         this.image = new Image();
         this.image.src = '../Images/playerRight.png';
@@ -49,7 +50,7 @@ export class TurningRight extends State{
     }
 
     handleInput(input){
-        if(this.player.speedX !== 0) this.player.maxFrame = 3;
+        if(this.game.speedX !== 0) this.player.maxFrame = 3;
         else this.player.maxFrame = 0;
 
         if(input.includes('s')) this.player.setState(states.TURNING_DOWN);
@@ -59,8 +60,8 @@ export class TurningRight extends State{
 } 
 
 export class TurningLeft extends State{
-    constructor(player){
-        super('TURNING_LEFT')
+    constructor(player , game){
+        super('TURNING_LEFT' , game)
         this.player = player;
         this.image = new Image();
         this.image.src = '../Images/playerLeft.png';
@@ -72,7 +73,7 @@ export class TurningLeft extends State{
     }
 
     handleInput(input){
-        if(this.player.speedX !== 0) this.player.maxFrame = 3;
+        if(this.game.speedX !== 0) this.player.maxFrame = 3;
         else this.player.maxFrame = 0;
 
         if(input.includes('s')) this.player.setState(states.TURNING_DOWN);
@@ -82,8 +83,8 @@ export class TurningLeft extends State{
 } 
 
 export class TurningUp extends State{
-    constructor(player){
-        super('TURNING_UP')
+    constructor(player , game){
+        super('TURNING_UP' , game)
         this.player = player;
         this.image = new Image();
         this.image.src = '../Images/playerUp.png';
@@ -95,7 +96,7 @@ export class TurningUp extends State{
     }
 
     handleInput(input){
-        if(this.player.speedY !== 0) this.player.maxFrame = 3;
+        if(this.game.speedY !== 0) this.player.maxFrame = 3;
         else this.player.maxFrame = 0;
 
         if(input.includes('d')) this.player.setState(states.TURNING_RIGHT);
